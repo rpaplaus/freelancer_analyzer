@@ -1,0 +1,128 @@
+job_classification: |-
+  You are analyzing freelance jobs.
+  Classify this job.
+  Return JSON.
+  Fields:
+  - category (AI, Web, Automation, Audio, Video, Data, Design, Other)
+  - difficulty (easy, medium, hard, expert)
+  - quality (low, medium, high)
+  - budget_level (low, medium, high)
+  - competition_risk (low, medium, high)
+  Job:
+  TITLE: {title}
+  DESCRIPTION: {description}
+  SKILLS: {skills}
+  BUDGET: {budget}
+  PROPOSALS: {proposals}
+
+client_quality: |-
+  Analyze this freelance client.
+  Return JSON.
+  Fields:
+  - client_quality (low, medium, high)
+  - payment_risk (low, medium, high)
+  - likely_to_hire (low, medium, high)
+  - budget_level (low, medium, high)
+  - notes (short)
+  Client data:
+  Total spent: {spent}
+  Rating: {rating}
+  Hires: {hires}
+  Country: {country}
+  Payment verified: {verified}
+
+scam_detection: |-
+  Check if this freelance job looks suspicious.
+  Return JSON.
+  Fields:
+  - scam_probability (low, medium, high)
+  - unclear_description (yes/no)
+  - unrealistic_budget (yes/no)
+  - external_contact_request (yes/no)
+  - notes (short)
+  Job:
+  {description}
+
+difficulty: |-
+  Estimate real difficulty of this freelance job.
+  Return JSON.
+  Fields:
+  - difficulty (easy, medium, hard, expert)
+  - required_experience (junior, mid, senior, expert)
+  - time_required (short, medium, long)
+  - complexity (low, medium, high)
+  Job:
+  {title}
+  {description}
+
+skill_category: |-
+  Classify this freelance job into a niche.
+  Return JSON.
+  Fields:
+  - main_category
+  - sub_category
+  - niche
+  - tech_stack
+  - is_ai_related (yes/no)
+  Job:
+  {title}
+  {description}
+  Skills: {skills}
+
+apply_recommendation: |-
+  You are helping a freelancer decide if they should apply.
+  Return JSON.
+  Fields:
+  - apply_recommendation (apply, maybe, skip)
+  - chance_to_win (low, medium, high)
+  - competition_level (low, medium, high)
+  - client_quality (low, medium, high)
+  - budget_quality (low, medium, high)
+  - notes (short)
+  Job:
+  TITLE: {title}
+  DESCRIPTION: {description}
+  PROPOSALS: {proposals}
+  CLIENT: {client_data}
+  BUDGET: {budget}
+
+proposal_generator: |-
+  Write a short Upwork proposal.
+  Rules:
+  - short
+  - confident
+  - professional
+  - not generic
+  - mention skill match
+  - ask 1 question
+  Job:
+  {title}
+  {description}
+  My skills:
+  {my_skills}
+
+trend_analysis: |-
+  Analyze these freelance jobs.
+  Find trends.
+  Return JSON.
+  Fields:
+  - trending_skills
+  - trending_categories
+  - rising_niches
+  - falling_niches
+  - high_budget_skills
+  Jobs:
+  {jobs_batch}
+
+final_score: |-
+  Score this job from 0 to 10.
+  Consider:
+  - budget
+  - client
+  - competition
+  - difficulty
+  - clarity
+  Return JSON:
+  {{ "score": number, "reason": "short" }}
+  Job:
+  {data}

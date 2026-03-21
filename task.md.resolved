@@ -1,0 +1,60 @@
+# Freelancer Analyzer Project Task List
+
+## Phase 1: Foundation & Scaffolding
+- [/] `scraper`, `database`, `rag`, `llm_analysis`, `analytics`, `dashboard`, `scheduler`, `config`, `api`
+- [/] Set up [config/settings.py](file:///Users/rpaplaus/Code/freelancer_analyzer/config/settings.py) and [config/prompts.yaml](file:///Users/rpaplaus/Code/freelancer_analyzer/config/prompts.yaml) (or `llm_analysis/prompt_templates.py`)
+- [/] Create [main.py](file:///Users/rpaplaus/Code/freelancer_analyzer/main.py) entrypoint
+
+## Phase 2: Database Schema (PostgreSQL)
+- [/] Set up SQLModel base and connection in `database/db.py`
+- [/] Implement `database/models.py` with all tables using SQLModel:
+  - [/] `platforms`
+  - [/] `clients`
+  - [/] `jobs`
+  - [/] `skills`, `job_skills`
+  - [/] `job_stats`, `client_stats`
+  - [/] `job_scores`
+  - [/] `skill_trends`
+  - [/] `analysis_results`
+  - [/] `scrape_logs`
+  - [/] `embeddings` (handled by external vector DB like Chroma)
+  - [/] `proposals`, `freelancers` (future)
+- [/] Set up basic CRUD operations in `database/crud.py`
+
+## Phase 3: Scraper Module
+- [ ] `scraper/upwork_rss.py`
+- [ ] `scraper/upwork_scraper.py`
+- [ ] `scraper/fiverr_scraper.py`
+- [ ] `scraper/parser.py` (normalization)
+- [ ] `scraper/models.py`
+
+## Phase 4: Analytics & Scoring
+- [ ] `analytics/trends.py`
+- [ ] `analytics/budgets.py`
+- [ ] `analytics/timing.py`
+- [ ] `analytics/competition.py`
+- [ ] `analytics/scoring.py` (scoring engine)
+- [ ] `analytics/recommendations.py`
+
+## Phase 5: LLM Analysis
+- [ ] `llm_analysis/prompt_templates.py`
+- [ ] `llm_analysis/job_classifier.py`
+- [ ] `llm_analysis/client_patterns.py`
+- [ ] `llm_analysis/skill_trends.py`
+- [ ] `llm_analysis/pricing_analysis.py`
+- [ ] `llm_analysis/proposal_analysis.py`
+
+## Phase 6: RAG System
+- [ ] `rag/embedder.py`
+- [ ] `rag/vector_store.py`
+- [ ] `rag/chunker.py`
+- [ ] `rag/rag_query.py`
+
+## Phase 7: API & Scheduler
+- [ ] `api/routes_jobs.py`, `api/routes_stats.py`, `api/routes_analysis.py`
+- [ ] `scheduler/jobs.py`
+- [ ] `scheduler/cron.py`
+
+## Phase 8: Dashboard
+- [ ] `dashboard/app.py` (Streamlit)
+- [ ] `dashboard/pages/` (trends, jobs, clients, recommendations)
