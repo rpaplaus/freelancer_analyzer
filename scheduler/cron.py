@@ -34,7 +34,7 @@ def complete_pipeline():
 
 def start_scheduler():
     scheduler = BackgroundScheduler()
-    interval = 120 # 2 hours
+    interval = 60 # 1 hour
     scheduler.add_job(complete_pipeline, 'interval', minutes=interval)
     scheduler.start()
     
