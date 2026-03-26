@@ -38,8 +38,13 @@ def create_job(session: Session, **job_data) -> Job:
         stmt = select(Job).where(Job.platform_id == job_data["platform_id"], Job.external_id == job_data["external_id"])
         existing = session.exec(stmt).first()
         if existing:
-            # We could optionally update the job properties here
-            # For this simple CRUD, we assume job exists means don't insert duplicate.
+            # Update existing job with new scraped data (e.g. proposals)
+            for key, value in job_data.items():
+                if value is not None:
+                    setattr(existing, key, value)
+            session.add(existing)
+            session.commit()
+            session.refresh(existing)
             return existing
 
     job = Job(**job_data)

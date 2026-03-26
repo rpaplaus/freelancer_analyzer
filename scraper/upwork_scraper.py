@@ -3,6 +3,17 @@ from typing import List
 from scraper.models import RawJob
 from config.settings import settings
 from datetime import datetime
+import re
+
+def parse_proposals(val) -> int:
+    if isinstance(val, int):
+        return val
+    if isinstance(val, str):
+        nums = re.findall(r'\d+', val)
+        if nums:
+            # Take max if range, e.g., "20 to 50" -> 50
+            return max(int(n) for n in nums)
+    return 0
 
 def fetch_upwork_jobs(query: str = "python") -> List[RawJob]:
     """
@@ -74,7 +85,13 @@ def fetch_upwork_jobs(query: str = "python") -> List[RawJob]:
                 client_total_spent=float(item.get("clientTotalSpent", 0)) if item.get("clientTotalSpent") else None,
                 client_rating=float(item.get("clientRating", 0)) if item.get("clientRating") else None,
                 client_total_hires=1 if item.get("hasHired") else 0,
-                proposals=item.get("proposals", 0) if isinstance(item.get("proposals"), int) else 0
+                category=item.get("parentCategory") or item.get("category") or (item.get("tags")[0] if isinstance(item.get("tags"), list) and item.get("tags") else None),
+                proposals=parse_proposals(
+                    item.get("proposals") or 
+                    item.get("bidCount") or 
+                    item.get("proposalsCount") or 
+                    item.get("numberOfProposals") or 0
+                )
             ))
             
     except Exception as e:

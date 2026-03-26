@@ -27,7 +27,8 @@ def fetch_remoteok_jobs(query: str = "python") -> List[RawJob]:
                         posted_at=datetime.fromisoformat(item.get("date").replace("Z", "+00:00")) if item.get("date") else datetime.utcnow(),
                         budget_max=float(item.get("salary_max", 0)) if item.get("salary_max") else None,
                         budget_min=float(item.get("salary_min", 0)) if item.get("salary_min") else None,
-                        client_country=item.get("location", "")
+                        client_country=item.get("location", ""),
+                        category=item.get("tags")[0] if isinstance(item.get("tags"), list) and item.get("tags") else None
                     ))
     except Exception as e:
         print(f"RemoteOK API Error: {e}")

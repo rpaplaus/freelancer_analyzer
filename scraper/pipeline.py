@@ -50,7 +50,8 @@ def run_pipeline():
                 "budget_max": rjob.budget_max,
                 "hourly": rjob.hourly,
                 "category": rjob.category,
-                "skills": rjob.skills
+                "skills": rjob.skills,
+                "proposals": rjob.proposals
             }
             
             try:

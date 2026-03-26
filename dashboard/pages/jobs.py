@@ -20,6 +20,7 @@ else:
             "Budget Min": j.budget_min,
             "Budget Max": j.budget_max,
             "Hourly": j.hourly,
+            "Proposals": j.proposals,
             "Category": j.category,
             "Posted": j.posted_at,
             "URL": j.url

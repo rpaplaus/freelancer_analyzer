@@ -46,6 +46,6 @@ with Session(engine) as session:
                 "Posted": j.posted_at,
                 "URL": j.url
             })
-        st.dataframe(pd.DataFrame(job_dicts), use_container_width=True)
+        st.dataframe(pd.DataFrame(job_dicts), width='stretch')
     else:
         st.info("No scored jobs found. Make sure the Scoring Engine is running (python main.py score).")
